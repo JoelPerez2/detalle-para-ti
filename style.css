@@ -1,0 +1,548 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    overflow: hidden;
+    background: #090510;
+    color: white;
+}
+
+
+/* =========================
+   PANTALLA INICIAL
+========================= */
+
+.inicio {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at center, #2b1238 0%, #12091b 45%, #060308 100%);
+
+    transition: 1.5s ease;
+}
+
+.tarjeta {
+    width: 420px;
+    padding: 45px 35px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 0 40px rgba(190, 100, 255, 0.12);
+
+    animation: aparecer 1.5s ease;
+}
+
+.sobre {
+    font-size: 55px;
+    color: #e7a8ff;
+
+    margin-bottom: 15px;
+
+    animation: latido 2.5s infinite;
+}
+
+.tarjeta h1 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.tarjeta p {
+    color: #d8c9df;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+button {
+    border: none;
+    padding: 13px 40px;
+
+    border-radius: 30px;
+
+    background: linear-gradient(
+        135deg,
+        #b76cff,
+        #e28bca
+    );
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.4s ease;
+
+    box-shadow:
+        0 0 20px rgba(194, 107, 255, 0.35);
+}
+
+button:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 35px rgba(214, 126, 255, 0.55);
+}
+
+
+/* =========================
+   DETALLE
+========================= */
+
+.detalle {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    background:
+        radial-gradient(
+            circle at 25% 70%,
+            rgba(151, 69, 173, 0.25),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(100, 53, 153, 0.25),
+            transparent 35%
+        ),
+        #08040d;
+
+    transition: opacity 2s ease;
+}
+
+.detalle.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =========================
+   MENSAJE
+========================= */
+
+.mensaje {
+    width: 480px;
+
+    margin-left: 260px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    opacity: 0;
+    transform: translateX(80px);
+
+    transition:
+        opacity 2s ease 1s,
+        transform 2s ease 1s;
+
+    z-index: 10;
+}
+
+.detalle.activo .mensaje {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.corazon {
+    font-size: 55px;
+
+    color: #e7a8ff;
+
+    animation: latido 2.5s infinite;
+}
+
+.mensaje h2 {
+    font-size: 35px;
+    font-weight: 300;
+
+    margin-top: 5px;
+}
+
+.linea {
+    width: 70px;
+    height: 1px;
+
+    background: #d59aff;
+
+    margin: 20px auto;
+}
+
+#texto {
+    min-height: 150px;
+
+    color: #e4d9e9;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    font-weight: 300;
+}
+
+.final {
+    margin-top: 20px;
+
+    color: #e6a9ff;
+
+    font-size: 16px;
+
+    opacity: 0;
+    animation: aparecerFinal 2s ease 5s forwards;
+}
+
+
+/* =========================
+   FLORES
+========================= */
+
+.flores {
+    position: absolute;
+
+    left: 5%;
+    bottom: 0;
+
+    width: 500px;
+    height: 600px;
+}
+
+.flor {
+    position: absolute;
+
+    bottom: -200px;
+
+    width: 80px;
+    height: 80px;
+
+    opacity: 0;
+
+    animation:
+        subirFlor 4s ease forwards,
+        balanceo 5s ease-in-out infinite 4s;
+}
+
+.flor1 {
+    left: 80px;
+    animation-delay: 0.3s;
+}
+
+.flor2 {
+    left: 190px;
+    transform: scale(0.8);
+    animation-delay: 0.8s;
+}
+
+.flor3 {
+    left: 300px;
+    transform: scale(0.7);
+    animation-delay: 1.3s;
+}
+
+.flor4 {
+    left: 140px;
+    bottom: -250px;
+    transform: scale(0.6);
+    animation-delay: 1.8s;
+}
+
+
+/* Pétalos */
+
+.petalo {
+    position: absolute;
+
+    width: 35px;
+    height: 50px;
+
+    background: linear-gradient(
+        135deg,
+        #f3b5ff,
+        #b66cff
+    );
+
+    border-radius: 50%;
+
+    left: 23px;
+    top: 5px;
+
+    transform-origin: center bottom;
+
+    box-shadow:
+        0 0 15px rgba(213, 135, 255, 0.4);
+}
+
+.p1 {
+    transform: rotate(0deg) translateY(-18px);
+}
+
+.p2 {
+    transform: rotate(90deg) translateY(-18px);
+}
+
+.p3 {
+    transform: rotate(180deg) translateY(-18px);
+}
+
+.p4 {
+    transform: rotate(270deg) translateY(-18px);
+}
+
+.centro {
+    position: absolute;
+
+    width: 24px;
+    height: 24px;
+
+    left: 28px;
+    top: 28px;
+
+    background: #ffd98a;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 12px rgba(255, 217, 138, 0.6);
+
+    z-index: 5;
+}
+
+
+/* Tallos */
+
+.tallo {
+    position: absolute;
+
+    width: 5px;
+    height: 330px;
+
+    background: linear-gradient(
+        to bottom,
+        #6fb67c,
+        #254c32
+    );
+
+    left: 38px;
+    top: 65px;
+
+    border-radius: 10px;
+
+    transform: rotate(4deg);
+
+    transform-origin: top;
+}
+
+
+/* =========================
+   PARTÍCULAS
+========================= */
+
+.particulas span {
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    background: #e7a8ff;
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    animation: flotar 7s infinite;
+}
+
+.particulas span:nth-child(1) {
+    left: 10%;
+    top: 80%;
+    animation-delay: 1s;
+}
+
+.particulas span:nth-child(2) {
+    left: 25%;
+    top: 70%;
+    animation-delay: 2s;
+}
+
+.particulas span:nth-child(3) {
+    left: 40%;
+    top: 85%;
+    animation-delay: 3s;
+}
+
+.particulas span:nth-child(4) {
+    left: 55%;
+    top: 75%;
+    animation-delay: 4s;
+}
+
+.particulas span:nth-child(5) {
+    left: 70%;
+    top: 80%;
+    animation-delay: 1.5s;
+}
+
+.particulas span:nth-child(6) {
+    left: 85%;
+    top: 65%;
+    animation-delay: 3.5s;
+}
+
+.particulas span:nth-child(7) {
+    left: 50%;
+    top: 50%;
+    animation-delay: 5s;
+}
+
+.particulas span:nth-child(8) {
+    left: 15%;
+    top: 50%;
+    animation-delay: 2.5s;
+}
+
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes latido {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+@keyframes subirFlor {
+
+    0% {
+        bottom: -250px;
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    100% {
+        bottom: 40px;
+        opacity: 1;
+    }
+}
+
+@keyframes balanceo {
+
+    0%, 100% {
+        rotate: -2deg;
+    }
+
+    50% {
+        rotate: 3deg;
+    }
+}
+
+@keyframes flotar {
+
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-300px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes aparecerFinal {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 800px) {
+
+    .tarjeta {
+        width: 85%;
+        padding: 35px 25px;
+    }
+
+    .flores {
+        left: -70px;
+        transform: scale(0.7);
+    }
+
+    .mensaje {
+        width: 90%;
+
+        margin-left: 100px;
+
+        margin-top: -50px;
+
+        padding: 20px;
+    }
+
+    .mensaje h2 {
+        font-size: 30px;
+    }
+
+    #texto {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+}
+
